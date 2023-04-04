@@ -8,7 +8,7 @@
 public class Aplicacao {
 
     public static void main(String args[]) {
-        CadastroAlunos cad = new CadastroAlunos(60);
+        CadastroAlunos cad = new CadastroAlunos();
     
     }
 }
