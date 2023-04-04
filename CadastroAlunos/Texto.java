@@ -1,8 +1,8 @@
 /**
  * Armazena um texto. Inverte texto e limpa espaços extras
  * 
- * @author Julio Arakaki 
- * @version 1.0 2019/02/29
+ * @author Gabriel Zaninotti
+ * @version 03/04/2023
  */
 public class Texto {
     // Atributo da classe ou varáveis de instancia
@@ -13,7 +13,7 @@ public class Texto {
      * 
      * @param txt String com o texto que será armazenado
      */
-    Texto(String txt){
+    public Texto(String txt){
         setTxt(txt);
         limpaEspacosExcedentes();
     }
@@ -23,8 +23,8 @@ public class Texto {
         this.txt = t;
     }
 
-    public String getTxt(){
-        return this.txt;
+    protected String getTxt(){
+        return txt;
     }
 
     /**
