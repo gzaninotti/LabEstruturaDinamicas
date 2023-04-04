@@ -3,46 +3,23 @@
  * espaços extras (operaçoes da classe Texto).
  * Retorna o nome da pessoa em formato de bibliografia
  * 
- * @author Julio Arakaki 
- * @version 1.0 2019/02/29
+ * @author Gabriel Zaninotti
+ * @version 03/04/2023
  */
-public class NomePessoa {
+public class NomePessoa extends Texto {
     // Atributos
-    private Texto nome;
+    // private Texto nome;
 
     // Construtores
-    public NomePessoa(String nome){
-        setNome(nome);
+    public NomePessoa(String nome) {
+        super(nome);
     }
 
     /**
      * @return the nome
      */
     public String getNome() {
-        return this.nome.getTxt();
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    private void setNome(String nome) {
-        this.nome = new Texto(nome);
-    }
-
-    /**
-     * Retorna quantidade de palavras do nome
-     * @return qtd numero de palavras
-     */
-    public int getQtdePalavras(){
-        return this.nome.getQtdePalavras();
-    }
-    
-    /**
-     * Retorna nome invertido
-     * @return sInv nome invertido
-     */
-    public String getNomeInvertido(){
-        return this.nome.inverterTexto();
+        return getTxt();
     }
 
     /**
@@ -52,18 +29,18 @@ public class NomePessoa {
     public String getNomeBiblio(){
 
         // Separa as palavras
-        String vts[] = this.nome.getTxt().split(" ");
-        int qtd = vts.length;
+        String palavrasSeparadas[] = getTxt().split(" ");
+        int tamanho = palavrasSeparadas.length;
 
-        String sBib = vts[qtd-1] + ", "; // ultimo nome + a virgula
+        String nomeBiblio = palavrasSeparadas[tamanho-1] + ", "; // ultimo nome + a virgula
         // Monta o texto
-        for (int i=0; i < (qtd-1); i++){
-            String pal = vts[i].toLowerCase(); // pega palavra
-            if(!verificaStr(pal)){ // Se nao for preposicao concatena
-                sBib = sBib + vts[i].toUpperCase().charAt(0) + ". ";
+        for (int i=0; i < (tamanho-1); i++){
+            String palavra = palavrasSeparadas[i].toLowerCase(); // pega palavra
+            if(!verificaStr(palavra)){ // Se nao for preposicao concatena
+                nomeBiblio = nomeBiblio + palavrasSeparadas[i].toUpperCase().charAt(0) + ". ";
             }
         }
-        return sBib;
+        return nomeBiblio;
     }
 
     /**
@@ -73,10 +50,10 @@ public class NomePessoa {
      */
     private boolean verificaStr(String s){
         // Vetor de strings a serem retiradas
-        final String sRet[]={"da", "de", "do", "di", "das", "dos", "e",};
+        final String stringsBanidas[]={"da", "de", "do", "di", "das", "dos", "e",};
 
-        for (int i = 0; i < sRet.length; i++){
-            if(sRet[i].equals(s)){
+        for (int i = 0; i < stringsBanidas.length; i++){
+            if(stringsBanidas[i].equals(s)){
                 return true;
             }
         }
@@ -87,7 +64,7 @@ public class NomePessoa {
      * Retorna os atributos como string
      */
     public String toString(){
-        return this.nome.toString();
+        return toString();
     }
 }
 
