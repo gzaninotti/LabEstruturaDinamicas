@@ -1,18 +1,39 @@
+import java.util.ArrayList;
 
 /**
  * Cadastro de alunos - com array.
  * 
- * @author Julio Arakaki
- * @version 28/03/2023
+ * @author Gabriel Zaninotti
+ * @version 03/04/2023
  */
 public class CadastroAlunos {
     // variaveis de instância
-    private Aluno cad[];
+    private ArrayList<Aluno> alunosCad; 
 
     /**
      * Construtor para objetos da classe CadastroAlunos
      */
-    public CadastroAlunos(int qtde) {
-        cad = new Aluno[qtde];
+    public CadastroAlunos() {
+        alunosCad = new ArrayList<Aluno>();
+    }
+    
+    public void inserir(Aluno aluno) {
+        this.alunosCad.add(aluno);
+    }
+    
+    public int remover(String ra) {
+        int i;
+        for(i = 0; i < this.alunosCad.size(); i++) {
+            if(this.alunosCad.get(i).getRA() == ra) {
+                this.alunosCad.remove(i);
+                return 1;
+            }
+        }
+        
+        return 0;
+    }
+    
+    public ArrayList<Aluno> listar() {
+        return this.alunosCad;
     }
 }
